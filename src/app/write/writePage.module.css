@@ -1,0 +1,91 @@
+.container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.select{
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50%;
+  background-color: rgb(15,23,42);
+}
+
+.editor {
+  display: flex;
+  gap: 20px;
+  height: 700px;
+  position: relative;
+}
+
+.button,
+.addButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--textColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.addButton {
+  border-color: #1a8917;
+}
+
+.add {
+  display: flex;
+  gap: 20px;
+  background-color: var(--bg);
+  position: absolute;
+  z-index: 999;
+  width: 30%;
+  left: 50px;
+}
+
+.input{
+  padding: 50px;
+  font-size: 64px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--textColor);
+}
+
+.input::placeholder{
+  color: #b3b3b1;
+}
+
+.textArea {
+  width: 100%;
+}
+.jodit-container {
+  display: flex;
+  min-width: 600px;
+  min-height: 600px;
+  height: 98% !important;
+  flex-direction: column;
+}
+.jodit-container textarea {
+  width: 600px;
+}
+.jodit-react-container{
+  width: 100%;
+  height: 80vh;
+}
+.jodit-workplace{
+  height: 90% !important;
+}
+.publish{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #1a8917;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+}
