@@ -1,7 +1,6 @@
 "use client";
-
 import Image from "next/image";
-import styles from "./writePage.module.css";
+import "./writePage.css";
 import { useEffect, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
@@ -31,7 +30,7 @@ const WritePage = () => {
 
 
   const getValue = (value) => {
-    setValue(value);
+    setValue(value.replace(/background-color:\s*rgb\(\d+,\s*\d+,\s*\d+\);?/g, ''));
   };
 
   useEffect(() => {
@@ -70,7 +69,7 @@ const WritePage = () => {
   }, [file]);
 
   if (status === "loading") {
-    return <div className={styles.loading}>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (status === "unauthenticated") {
@@ -84,13 +83,17 @@ const WritePage = () => {
       .replace(/[^\w\s-]/g, "")
       .replace(/[\s_-]+/g, "-")
       .replace(/^-+|-+$/g, "");
-
-  const handleSubmit = async () => {
+  const cleantitle = ()=>{
+    setTitle(title.replace(/background-color:\s*rgb\(\d+,\s*\d+,\s*\d+\);?/g, ''));
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if(title ==="" || value==="" || catSlug===""){
       alert("Please fill in all fields.Title, Description or Category should not be empty.");
       // Don't proceed with the API call
       return;
     }
+    
     const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
@@ -107,44 +110,56 @@ const WritePage = () => {
       router.push(`/posts/${data.id}`);
     }
   };
-
+  const category=["style","fashion","food","culture","travel","coding","science","lifestyle","education","technology"]
   return (
-    <div className={styles.container}>
+    <div className="container">
+
+      {/*<ReactQuill
+            className={styles.input}
+            theme="bubble"
+            value={title}
+            onChange={setTitle}
+            placeholder="Title"
+      />*/}
       <input
         type="text"
         placeholder="Title"
-        className={styles.input}
+        className="input"
         onChange={(e) => setTitle(e.target.value)}
       />
-      <div className={styles.editor}>
-        <button className={styles.button} onClick={() => setOpen(!open)}>
+      {file && (
+            <img 
+                className="writeImg"
+                src={URL.createObjectURL(file)}
+                alt="" 
+            />
+        )}
+      <div className="editor">
+        <button className="button" onClick={() => setOpen(!open)}>
           <Image src="/plus.png" alt="" width={16} height={16} />
         </button>
         {open && (
-          <div className={styles.add}>
+          <div className="add">
             <input
               type="file"
               id="image"
               onChange={(e) => setFile(e.target.files[0])}
               style={{ display: "none" }}
             />
-            <button className={styles.addButton}>
+            <button className="addButton">
               <label htmlFor="image">
                 <Image src="/image.png" alt="" width={16} height={16} />
               </label>
             </button>
-            <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
-              <option value="style">style</option>
-              <option value="fashion">fashion</option>
-              <option value="food">food</option>
-              <option value="culture">culture</option>
-              <option value="travel">travel</option>
-              <option value="coding">coding</option>
+            <select className="select" onChange={(e) => setCatSlug(e.target.value)}>
+              {category?.map((item,idx)=>(
+                <option value={item}>{item}</option>
+              ))}
             </select>
           </div>
         )}
         <TextEditor 
-          className={styles.textArea}
+          className="textArea"
           initialValue="" 
           getValue={getValue} 
           placeholder="Tell your Story..." 
@@ -157,7 +172,7 @@ const WritePage = () => {
           placeholder="Tell your story..."
         /> */}
       </div>
-      <button className={styles.publish} onClick={handleSubmit}>
+      <button className="publish" onClick={handleSubmit}>
         Publish
       </button>
     </div>

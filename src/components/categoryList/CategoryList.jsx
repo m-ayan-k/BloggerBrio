@@ -5,7 +5,7 @@ import Image from "next/image";
 import {shuffleArray} from "@/utils/helper"
 
 export const getCategories = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
+  const res = await fetch(`${process.env.MAIN_URL}/api/categories`, {
     cache: "no-store",
   });
 

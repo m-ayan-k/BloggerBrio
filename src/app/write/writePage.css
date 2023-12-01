@@ -35,18 +35,26 @@
   border-color: #1a8917;
 }
 
+.writeImg{
+    width: 75vw;
+    height: 250px;
+    border-radius: 10px;
+    object-fit:  cover ;
+    margin: 20px auto;
+}
 .add {
+  width: 16%;
   display: flex;
   gap: 20px;
   background-color: var(--bg);
   position: absolute;
   z-index: 999;
-  width: 30%;
   left: 50px;
+
 }
 
 .input{
-  padding: 50px;
+  padding: 35px;
   font-size: 64px;
   border: none;
   outline: none;
@@ -58,10 +66,11 @@
   color: #b3b3b1;
 }
 
-.textArea {
-  width: 100%;
+
+.jodit-react-container{
+  width: 90%;
 }
-.jodit-container {
+/*.jodit-container {
   display: flex;
   min-width: 600px;
   min-height: 600px;
@@ -71,13 +80,10 @@
 .jodit-container textarea {
   width: 600px;
 }
-.jodit-react-container{
-  width: 100%;
-  height: 80vh;
-}
+
 .jodit-workplace{
   height: 90% !important;
-}
+}*/
 .publish{
   position: absolute;
   top: 0px;

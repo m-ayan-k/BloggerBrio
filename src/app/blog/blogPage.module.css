@@ -1,5 +1,5 @@
 .title{
-  color: white;
+  color: var(--textColor);
   padding: 5px 10px;
   text-align: center;
   text-transform: capitalize;

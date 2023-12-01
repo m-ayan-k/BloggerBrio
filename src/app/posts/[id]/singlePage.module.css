@@ -62,10 +62,11 @@
   margin-top: 60px;
 }
 
-.description p {
+.description {
   font-size: 20px;
   font-weight: 300;
   margin-bottom: 20px;
+  color: var(--textColor);
 }
 
 @media screen and (max-width: 1536px) {

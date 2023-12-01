@@ -43,10 +43,10 @@ a {
 
 .wrapper {
   max-width: 1536px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 80px;
-  padding-right: 80px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 @media screen and (max-width: 1536px) {

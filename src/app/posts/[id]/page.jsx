@@ -6,7 +6,7 @@ import {convertDateFormat} from "@/utils/helper"
 
 
 const getData = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+  const res = await fetch(`${process.env.MAIN_URL}/api/posts/${id}`, {
     cache: "no-store",
   });
 
@@ -26,7 +26,7 @@ const SinglePage = async ({ params }) => {
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.title}>{data?.title}</h1>
+          <h1 className={styles.title}>{data?.title.replace(/<[^>]+>/g,' ')}</h1>
           <div className={styles.user}>
             {data?.user?.image && (
               <div className={styles.userImageContainer}>

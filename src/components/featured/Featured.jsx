@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const getData = async (id) => {
   const res = await fetch(
-    `http://localhost:3000/api/posts/${id}`
+    `${process.env.MAIN_URL}/api/posts/${id}`
   );
   if (!res.ok) {
     throw new Error("Failed");
@@ -13,7 +13,7 @@ const getData = async (id) => {
   return res.json();
 };
 const Featured = async () => {
-  const data = await getData('clool4dm60005u04sq2z32445');
+  const data = await getData(process.env.CategoryId);
   // console.log(data)
   return (
     <div className={styles.container}>
@@ -29,7 +29,7 @@ const Featured = async () => {
           <p className={styles.postDesc}>
             {data.desc.replace(/<[^>]+>/g,' ')}
           </p>
-          <Link href={`/posts/clool4dm60005u04sq2z32445`} className={styles.link}>
+          <Link href={`/posts/${process.env.CategoryId}`} className={styles.link}>
             Read More
           </Link>
         </div>

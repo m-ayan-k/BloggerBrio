@@ -7,7 +7,7 @@ import {convertDateFormat,shuffleArray} from "@/utils/helper"
 
 const getData = async () => {
   const res = await fetch(
-    `http://localhost:3000/api/postorder`,{
+    `${process.env.MAIN_URL}/api/postorder`,{
       cache: "no-store",
     }
   );
@@ -22,7 +22,7 @@ const getData = async () => {
 const MenuPosts = async({ withImage }) => {
   const data = await getData();
   const colors= shuffleArray(['#ff7857','#ffb14f','#7fb881','#775aec','#789cff','#ff7887']);
-  const filterdata = data.filter((element) => element.id!== 'clool4dm60005u04sq2z32445');
+  const filterdata = data.filter((element) => element.id!== process.env.CategoryId);
   if(filterdata.length>4){
     filterdata.pop_back();
   }
@@ -44,7 +44,7 @@ const MenuPosts = async({ withImage }) => {
               {item.catSlug}
             </span>
             <h3 className={styles.postTitle}>
-              {item.title}
+              {item.title.replace(/<[^>]+>/g,' ')}
             </h3>
             <div className={styles.detail}>
               <span className={styles.username}>{item.user?.name}{" "}</span>

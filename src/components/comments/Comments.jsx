@@ -24,7 +24,7 @@ const Comments = ({ postid }) => {
   const { status } = useSession();
 
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postid=${postid}`,
+    `${process.env.MAIN_URL}/api/comments?postid=${postid}`,
     fetcher
   );
   // console.log(data);
