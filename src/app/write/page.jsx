@@ -153,7 +153,7 @@ const WritePage = () => {
             </button>
             <select className="select" onChange={(e) => setCatSlug(e.target.value)}>
               {category?.map((item,idx)=>(
-                <option value={item}>{item}</option>
+                <option value={item} key={idx}>{item}</option>
               ))}
             </select>
           </div>

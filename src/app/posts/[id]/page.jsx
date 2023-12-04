@@ -30,7 +30,11 @@ const SinglePage = async ({ params }) => {
           <div className={styles.user}>
             {data?.user?.image && (
               <div className={styles.userImageContainer}>
-                <Image src={data.user.image} alt="" fill className={styles.avatar} />
+                <Image src={data.user.image} alt="" fill
+                  style={{objectFit:"cover", aspectRatio: "3/2" }} 
+                  className={styles.avatar} 
+                  sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
+                />
               </div>
             )}
             <div className={styles.userTextContainer}>
@@ -41,7 +45,11 @@ const SinglePage = async ({ params }) => {
         </div>
         {data?.img && (
           <div className={styles.imageContainer}>
-            <Image src={data.img} alt="" fill className={styles.image} />
+            <Image src={data.img} alt="" fill
+              style={{objectFit:"cover", aspectRatio: "3/2" }} 
+              className={styles.image}
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw" 
+            />
           </div>
         )}
       </div>

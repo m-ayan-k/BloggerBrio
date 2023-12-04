@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 const fetcher = async (url) => {
+  console.log("133");
   const res = await fetch(url);
 
   const data = await res.json();
@@ -22,6 +23,7 @@ const fetcher = async (url) => {
 
 const Comments = ({ postid }) => {
   const { status } = useSession();
+
 
   const { data, mutate, isLoading } = useSWR(
     `${process.env.MAIN_URL}/api/comments?postid=${postid}`,
@@ -63,7 +65,7 @@ const Comments = ({ postid }) => {
           ? "loading"
           : data?.map((item) => (
               <div className={styles.comment} key={item._id}>
-                <div className={styles.user}>
+                <div className={styles.user} key={item._id}>
                   {item?.user?.image && (
                     <Image
                       src={item.user.image}

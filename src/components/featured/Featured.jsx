@@ -22,7 +22,11 @@ const Featured = async () => {
       </h1>
       <div className={styles.post}>
         <div className={styles.imgContainer}>
-          <Image src={data.img} alt="" fill className={styles.image} />
+          <Image src={data.img} alt="" fill
+            style={{objectFit:"cover", aspectRatio: "3/2" }} 
+            className={styles.image} 
+            sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
+          />
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.postTitle}>{data.title.replace(/<[^>]+>/g,' ')}</h1>

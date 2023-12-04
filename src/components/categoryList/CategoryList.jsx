@@ -37,6 +37,7 @@ const CategoryList = async () => {
                 alt=""
                 width={32}
                 height={32}
+                layout="fill"  style={{objectFit:"cover", aspectRatio: "3/2" }}
                 className={styles.image}
               />
             )}

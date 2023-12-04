@@ -46,10 +46,11 @@
   flex: 1;
   height: 350px;
   position: relative;
+
 }
 
 .image {
-  object-fit: cover;
+  padding: 5px;
 }
 
 .content {
